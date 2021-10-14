@@ -2,12 +2,12 @@
 
 #header-container {
     width: 100%;
-    height: 12.5vh;
+    height: 15vh;
     
     display: flex;
     flex-direction: row;
 
-    position: relative;
+    background: #0E0B16;
     z-index: 3;
 }
 
@@ -18,7 +18,7 @@
 
 .header-navigation ul {
     width: 100%;
-    color: #FFD369;
+    color: #A239CA;
     font-family: 'Gemunu Libre', sans-serif;
     list-style: none;
     text-align: center;   
@@ -32,12 +32,13 @@
 
 .header-navigation ul li a {
     font-size: 32px;
-    color: #FFD369;
+    color: #A239CA;
     text-decoration: none;
 
-    transition: color 0.3s;
+    transition: 0.3s;
 }
 
 .header-navigation ul li a:hover {
     color: #EEEEEE;
+    font-size: 36px;
 }

@@ -2,7 +2,13 @@
     height: 100vh;
     width: 100vw;
 
-    background: #1A1A1D;
+    background: #0E0B16;
+}
+
+.todo-header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .inner-container {
@@ -14,11 +20,46 @@
     margin-left: 20%;
     margin-right: 20%;
 
-    background: #FFD369;
+    border-radius: 5px;
+
+    background: #A239CA;
 }
 
 .inner-container h1 {
-    color: #222831;
-
+    color: #0E0B16;
+    margin-left: 10%;
     text-align: center;
+}
+
+.inner-container h2{
+    position: relative;
+    cursor: pointer;
+    font-size: 28px;
+    transform: scale(1.7);
+    transition: 1s ease-in-out;
+}
+
+.inner-container h3 {
+    color: #0E0B16;
+
+    font-size: 26px;
+}
+
+.inner-container h2:hover {
+    color: #EEEEEE;
+    transform: scale(1.5) rotate(360deg) ;
+}
+
+.plus-container {
+    justify-content: left;
+    margin-left: 15%;
+    height: 10px;
+
+    color: #0E0B16;
+}
+
+@media only screen and (max-width: 1024px) {
+    .inner-container h3 {
+        display: none;
+    }
 }

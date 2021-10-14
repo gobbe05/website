@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './CSS/index.css';
 import Home from './home';
+import Algs from './Algorithms and data structures/algs'
+import Login from './Login/login';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -10,6 +12,8 @@ ReactDOM.render(
     <Router>
       <Switch>
         <Route path="/home" exact component={() => <Home />} />
+        <Route path="/login" exact component={() => <Login />} />
+        <Route path="/algs" exact component={() => <Algs />} />
       </Switch>
     </Router>
   </React.StrictMode>,

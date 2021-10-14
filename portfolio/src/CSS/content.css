@@ -1,14 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@500&display=swap');
 
+#root {
+    width: 100vw;
+    overflow: hidden;
+}
+
 .content-container {
     display: flex;
     height: 87.5vh;
-
     font-size: 36px;
     font-family: 'Gemunu Libre', sans-serif;
-    color: #FFD369;
+    color: #A239CA;
 
     overflow: hidden;
+}
+
+.content-container p {
+    color: #A239CA;
+    transition: color 5s;
+}
+
+.content-container p:hover {
+    color: #EEEEEE;
 }
 
 .content-container h1 {
@@ -16,10 +29,13 @@
 }
 
 .content-container h3 {
+    color: #141c3a;
+
     transition: left 2s;
 }
 
 .content-container div {
+    
     transition: left 2s;
 }
 
@@ -36,7 +52,7 @@
 }
 
 .move-content-container .personal-story p {
-    left: 25%;
+    left: 30%;
 }
 
 .move-content-container .story-1{
@@ -72,8 +88,15 @@
     width: 40%;
 
     left: -120%;
-    top: 25%;
+    margin-top: 15%;
     transition: right 0.5s;
+    transition: left 1s;
+
+}
+
+.personal-story:hover {
+    color: #EEEEEE;
+
 }
 
 .personal-information {
@@ -81,24 +104,38 @@
 
     z-index: 0;
 
-    left: -32.5%;
+    left: -30%;
     top: 20%;
     width: 100%;
 }
 
 
 .personal-information h1 {
-    box-shadow: 0 7px 0px #FFD369;
+    box-shadow: 0 7px 0px #A239CA;
     width: 450px;
     left: 5%;
 
     text-align: center;
 
     position: relative;
+
+    color: #A239CA;
+
+    animation: pulse 2.5s;
+
+    transition: 0.5s;
+}
+
+.personal-information h1:hover {
+    color: #EEEEEE;
+
+    box-shadow: 0 10px 0px #EEEEEE;
 }
 
 .personal-information h3 {
-    box-shadow: 0 7px 0px #FFD369;
+    box-shadow: 0 7px 0px #A239CA;
+
+    color: #A239CA;
 
     text-align: center;
 
@@ -106,6 +143,16 @@
     left: 35%;
 
     position: relative;
+
+    animation: pulse 4s;
+    
+    transition: 1.5s;
+}
+
+.personal-information h3:hover {
+    color: #EEEEEE;
+
+    box-shadow: 0 10px 0px #EEEEEE;
 }
 
 .arrow {
@@ -124,7 +171,7 @@
 }
 
 .arrow-left a {
-    color: #FFD369;
+    color: #A239CA;
     text-decoration: none;
 }
 
@@ -136,14 +183,16 @@
 }
 
 .arrow a{
-    color: #FFD369;
+    color: #A239CA;
     text-decoration: none;
 
-    
+    transition: color 0.5s;    
 }
 
 .arrow a:hover {
     color: #EEEEEE;
+    opacity: 0.9;
+    
 }
 
 .arrow-down {
@@ -195,5 +244,59 @@
     }
     1000% {
         top: 85%;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        color: #A239CA;
+    }
+
+    50% {
+        transform: scale(1.1);
+        color: #EEEEEE;
+        box-shadow: 0 10px 0px #EEEEEE;
+    }
+
+    55% {
+        transform: scale(1);
+        box-shadow: 0 7px 0px #EEEEEE;
+    }
+
+
+
+    100% {
+        color: #A239CA
+    }
+}
+
+@media screen and (min-height: 1366px) {
+    .name {
+        font-size: 72px;
+    }
+    .date {
+        font-size: 62px;
+
+    }
+
+    .personal-story p {
+        margin-top: 75%;
+        font-size: 24px;
+    }
+
+    .personal-information {
+        left: -25%;
+        top: 15%;
+    }
+
+    .move-content-container .personal-story p {
+        left: 47.5%;
+    }
+}
+
+@media screen and (min-height: 1024px) {
+    .personal-information {
+        left: -20%;
+        top: 15%;
     }
 }

@@ -9,24 +9,32 @@ body {
 }
 
 .login-container {
-  width: 100vw;
-  background-color: #FFD369;
+  height: 80vh;
+}
+
+.login-content {
+  width: 100%;
 }
 
 #container {
-  animation: fadeInAnimation ease 3s;
+  animation: fadeInAnimation ease 1s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 
-  background-color: #FFD369;
-  margin-left: 400px;
-  margin-right: 400px;
+  padding: 10%;
+  border-radius: 12px;
+  box-shadow: 0px 0px 100px hsl(283, 86%, 9%);
+
+  background-color: #A239CA;
   margin-top: 0;
   height: 250px;
+  width: 50%;
+  margin-top: 10%;
+  margin-left: 15%;
+  margin-right: 15%;
 
-
-
-  padding: 120px;
+  padding-top: 60px;
+  padding-bottom: 60px;
 
 }
 
@@ -39,8 +47,12 @@ body {
    }
   }
 
-form {
-  color: #950740;
+body {
+  background: #A239CA;
+}
+
+  form {
+  color: #0E0B16;
   width: 100%;
   
 }
@@ -50,50 +62,56 @@ form input {
   height: 30px;
 
   border: none;
+
+  transition: .5s;
+}
+
+form input:focus {
+  transform: scale(1.02);
 }
 
 form button {
   position: relative;
-  width: 102%;
+  width: 101%;
   height: 30px;
 
-  background: #393E46;
-  color: #EEEEEE;
+  background: white;
+  color: black;
 
   border-style: none;
 
   margin-top: 15px;
 
   cursor: pointer;
+
+  transition: 0.5s;
 }
 
 .change {
-  color: #222831;
+  color: #0E0B16;
   text-decoration: none;
 }
 
 form button:hover {
-  background: #222831;
+  transform: scale(1.01);
+  background: #0E0B16;
   color: #EEEEEE;
-  transition: background 0.2s;
-  transition: color 0.2s;
-
 }
 form legend {
   font-size: 24px;
 
-  color: #222831;
+  color: #0E0B16;
 
   margin-bottom: 10px;
   margin-top: 10px;
 }
 
 .sign-up-confirmed {
-  background: #4fc93c;
-
+  background: #A239CA;
+  color: #A239CA;
   transition: background 0.5s;
 }
 
 .sign-up-confirmed:hover {
-  background: #4fc93c;
+  background: #A239CA;
 }

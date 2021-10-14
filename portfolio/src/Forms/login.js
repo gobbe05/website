@@ -2,6 +2,21 @@ import React, { useEffect } from 'react'
 import './forms.css'
 import SignUp from './signup'
 import CryptoJS from 'crypto-js'
+import useActiveUser from '../Custom Hooks/useActiveUser'
+import useLoggedIn from '../Custom Hooks/useLoggedIn'
+
+
+/*
+/// WORK IN PROGRESS ///
+--DONE-- Component and sign up needs to get more safe using encryption. 
+*/
+class User {
+    constructor(username, password, todolist) {
+        this.username = username
+        this.password = password
+        this.todolist = todolist
+    }
+}
 
 /*Component handles the login section. Works together with the <Signup />
 component to handle storing passwords/usernames. 
@@ -10,11 +25,7 @@ decrypted before usage.
 
 
 RETURNS jsx code to the login section
-PROPERTIES include loggedIn 
-
-/// WORK IN PROGRESS ///
---DONE-- Component and sign up needs to get more safe using encryption. 
-*/
+PROPERTIES include loggedIn */
 
 export default function Login(props) {
     
@@ -24,15 +35,21 @@ export default function Login(props) {
     const [loginpageActive, setLoginpageActive] = React.useState(true)
     const [signUpActive, setSignUpActive] = React.useState(false)
     const [credentialsValid, setCredentialsValid] = React.useState(false)
-    
+    const [activerUser, setActiveUser] = useActiveUser('activeUser', 0)
+    const [usernameList, setUsernameList] = useLoggedIn('test', [new User('guest', '', ['test', 'test'])])
+    const [timesLoggedIn, setTimesLoggedIn] = useLoggedIn('timeslogged', 0)
+    const [prevUser, setPrevUser] = useLoggedIn('prevUser', 0)
 
     React.useEffect(() => {
+        setActiveUser(0)
+
         let inData //Creates variable
         if(localStorage.getItem('loginData')) { 
             inData = localStorage.getItem("loginData") //Defines data
             var bytes = CryptoJS.AES.decrypt(inData, '123') //Decrypts data
             var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8)) //Parses JSON data and converts data to string
             setUsername(decryptedData)
+            setActiveUser(prevUser)
         }
     }, [])
 
@@ -45,8 +62,17 @@ export default function Login(props) {
         username.map(item => { //Loops through array of passwords/usernames 
             if(item.username == inputfieldUsername) {
                 if(item.password == inputfieldPassword) {
+                    setActiveUser(() => {
+                        usernameList.map((item, index) => {
+                            if(item.username == inputfieldUsername) {
+                                setActiveUser(index)    
+                                setPrevUser(index)
+                            }
+                        })
+                    })
+                    console.log(item)
                     setCredentialsValid(true)
-                    setTimeout(() => setLoginpageActive(false), 600) //Wait 600 milliseconds
+                    setTimeout(() => window.location.reload(), 600)
                 }
             }
         })
@@ -91,7 +117,7 @@ export default function Login(props) {
             setSignUpActive={setSignUpActive}/>)
     }
     else {
-        props.loggedIn(true)
+        
         return null
     }
 }
