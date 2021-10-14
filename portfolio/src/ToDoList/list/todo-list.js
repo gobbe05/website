@@ -50,6 +50,16 @@ export default function Todolist(props) {
         localStorage.setItem('test', JSON.stringify(usernameList))
     }
 
+    function removeItem(index) {
+        let todolist
+                                    
+        todolist = ulItems
+        delete todolist[index]
+        
+        setUlItems([...todolist])
+        saveTodoList()
+    }
+
     //NEEDS TO FIX ACTIVE USER
     //1. take active user and modify. 2. Create temp variable 3. modify temp. 4. modify usernameList array
 
@@ -74,16 +84,14 @@ export default function Todolist(props) {
                     {
                         ulItems.map((value, index) => {
                             
-                            return (
-                                
-                                <><li key={value}>{value} {index}</li><button onClick={() => {
-                                    console.log(ulItems)
-                                    setTodolist(ulItems)
-                                    
-                                    setTodolist(prev => prev.splice(index, 1))
-                                    setUlItems(todolist)
-                                }}></button></>
-                            )
+                            if(value == null) {
+                                return null
+                            }
+                            else {
+                                return (
+                                    <><li key={value}>{value} {index}</li><button onClick={() => removeItem(index)}></button></>
+                                )
+                            }
                         })
                     }
                 </ul>
