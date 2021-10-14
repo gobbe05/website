@@ -42,7 +42,6 @@ export default function Login(props) {
 
     React.useEffect(() => {
         setActiveUser(0)
-
         let inData //Creates variable
         if(localStorage.getItem('loginData')) { 
             inData = localStorage.getItem("loginData") //Defines data
