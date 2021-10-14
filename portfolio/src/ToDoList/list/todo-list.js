@@ -12,6 +12,7 @@ RETURNS JSX code for the todolist
 
 export default function Todolist(props) {
     const [ulItems, setUlItems] = React.useState([])
+    const [todolist, setTodolist] = React.useState([])
     const [addItem, setAddItem] = React.useState(false)
     const [usernameList, setUsernameList] = useLoggedIn('test', '')
     const [activerUser, setActiveUser] = useActiveUser('activeUser', 0) /*Activeuser access an indexed item in an array 
@@ -26,6 +27,7 @@ export default function Todolist(props) {
         if(localStorage.getItem('test')[activerUser]) {
             let temp = (JSON.parse(localStorage.getItem('test')))
             setUlItems(temp[activerUser].todolist)
+            
         }
     }, [])
 
@@ -37,11 +39,16 @@ export default function Todolist(props) {
     */
 
     React.useEffect(() => {
+        saveTodoList()
+        console.log('triggered')
+    }, [ulItems])
+
+    function saveTodoList() {
         let tempUsernameArray = usernameList
         tempUsernameArray[activerUser].todolist = ulItems
         setUsernameList(tempUsernameArray)
         localStorage.setItem('test', JSON.stringify(usernameList))
-    }, [ulItems])
+    }
 
     //NEEDS TO FIX ACTIVE USER
     //1. take active user and modify. 2. Create temp variable 3. modify temp. 4. modify usernameList array
@@ -66,7 +73,17 @@ export default function Todolist(props) {
                 <ul>
                     {
                         ulItems.map((value, index) => {
-                            return <li key={index}>{value} {index}</li>
+                            
+                            return (
+                                
+                                <><li key={value}>{value} {index}</li><button onClick={() => {
+                                    console.log(ulItems)
+                                    setTodolist(ulItems)
+                                    
+                                    setTodolist(prev => prev.splice(index, 1))
+                                    setUlItems(todolist)
+                                }}></button></>
+                            )
                         })
                     }
                 </ul>
