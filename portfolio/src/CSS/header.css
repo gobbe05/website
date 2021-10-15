@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@500&display=swap');
+
+#header-container {
+    width: 100%;
+    height: 15vh;
+    
+    display: flex;
+    flex-direction: row;
+
+    background: #0E0B16;
+    z-index: 3;
+}
+
+.header-navigation {
+    width: 94%;
+    line-height: 10vh;
+}
+
+.header-navigation ul {
+    width: 100%;
+    color: #A239CA;
+    font-family: 'Gemunu Libre', sans-serif;
+    list-style: none;
+    text-align: center;   
+}
+
+.header-navigation ul li {
+    display: inline;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.header-navigation ul li a {
+    font-size: 32px;
+    color: #A239CA;
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+.header-navigation ul li a:hover {
+    color: #EEEEEE;
+    font-size: 36px;
+}
